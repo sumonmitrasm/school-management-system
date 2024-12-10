@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,26 +41,23 @@ Route::get('admin/admin/list', function () {
     return view('admin.admin.list');
 });
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Create Admin Middleware>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Route::group(['middleware' => 'admin'], function(){
+// 	Route::get('admin/dashboard', function () {
+// 	    return view('admin.dashboard');
+// 	});
+// });
 Route::group(['middleware' => 'admin'], function(){
-	Route::get('admin/dashboard', function () {
-	    return view('admin.dashboard');
-	});
+	Route::get('admin/dashboard',[DashboardController::class, 'dashboard']);
 });
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Create Teacher Middleware>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Route::group(['middleware' => 'teacher'], function(){
-	Route::get('teacher/dashboard', function () {
-	    return view('admin.dashboard');
-	});
+	Route::get('teacher/dashboard',[DashboardController::class, 'dashboard']);
 });
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Create Student Middleware>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Route::group(['middleware' => 'parent'], function(){
-	Route::get('parent/dashboard', function () {
-	    return view('admin.dashboard');
-	});
+	Route::get('parent/dashboard',[DashboardController::class, 'dashboard']);
 });
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Create Parent Middleware>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Route::group(['middleware' => 'student'], function(){
-	Route::get('student/dashboard', function () {
-	    return view('admin.dashboard');
-	});
+	Route::get('student/dashboard',[DashboardController::class, 'dashboard']);
 });
