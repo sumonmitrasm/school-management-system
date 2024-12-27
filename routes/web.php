@@ -32,6 +32,8 @@ Route::get('clear', function () {
 Route::get('/',[AuthController::class, 'login']);
 Route::post('login',[AuthController::class, 'Authlogin']);
 Route::get('logout',[AuthController::class, 'logout']);
+Route::get('forgot-password',[AuthController::class, 'forgotPassword']);
+Route::post('post-forgot-password',[AuthController::class, 'PostforgotPassword']);
 
 // Route::get('admin/dashboard', function () {
 //     return view('admin.dashboard');
