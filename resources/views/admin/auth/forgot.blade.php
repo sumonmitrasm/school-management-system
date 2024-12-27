@@ -22,7 +22,7 @@
       <a href="#" class="h1"><b>Genesis</b>School</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Forgot Pssword</p>
+      <p class="login-box-msg">Forgot Pssword test</p>
       @include('_message')
       <form action="{{url('post-forgot-password')}}" method="post">{{ csrf_field() }}
         <div class="input-group mb-3">
