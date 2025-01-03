@@ -70,5 +70,31 @@ class AuthController extends Controller
 			return redirect()->back()->with('error', "Email not found in the system.");
 		}
 	}
+	public function reset($token){
+		$user = User::getTokenSingle($token);
+		//dd($user);
+		if(!empty($user)){
+			$data['user'] = $user;
+			return view('admin.auth.reset')->with(compact('user'));
+		}else{
+			abort(404);
+		}
+	}
+	public function resetPassword(Request $request, $token = null) {
+		if ($request->password == $request->cpassword) {
+			$user = User::getTokenSingle($token);
+			if ($user) {
+				$user->password = Hash::make($request->password);
+				// $user->remember_token = Str::random(30);
+				$user->save();
+				return redirect('/')->with('success', "Password reset successfully!");
+			} else {
+				return redirect('/')->with('error', "Invalid token!");
+			}
+		} else {
+			return redirect()->back()->with('error', "Password and confirm password do not match!");
+		}
+	}
+	
 	
 }

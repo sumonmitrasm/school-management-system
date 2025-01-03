@@ -18,15 +18,15 @@ use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('clear', function () {
-    \Artisan::call('cache:clear');
-    \Artisan::call('config:clear');
-    \Artisan::call('route:clear');
-    \Artisan::call('view:clear');
-    \Artisan::call('config:cache');
-   // \Artisan::call('optimize');
-    dd("All clear!");
-});
+// Route::get('clear', function () {
+//     \Artisan::call('cache:clear');
+//     \Artisan::call('config:clear');
+//     \Artisan::call('route:clear');
+//     \Artisan::call('view:clear');
+//     \Artisan::call('config:cache');
+//    // \Artisan::call('optimize');
+//     dd("All clear!");
+// });
 
 
 Route::get('/',[AuthController::class, 'login']);
@@ -34,6 +34,9 @@ Route::post('login',[AuthController::class, 'Authlogin']);
 Route::get('logout',[AuthController::class, 'logout']);
 Route::get('forgot-password',[AuthController::class, 'forgotPassword']);
 Route::post('post-forgot-password',[AuthController::class, 'PostforgotPassword']);
+Route::get('reset/{token}',[AuthController::class, 'reset']);
+Route::post('reset-password/{token}', [AuthController::class, 'resetPassword']);
+
 
 // Route::get('admin/dashboard', function () {
 //     return view('admin.dashboard');
