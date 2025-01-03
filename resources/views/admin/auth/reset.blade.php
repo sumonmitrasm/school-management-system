@@ -22,46 +22,47 @@
       <a href="#" class="h1"><b>Genesis</b>School</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Forgot Pssword test</p>
+      <p class="login-box-msg">Reset Your Password</p>
       @include('_message')
-      <form action="{{url('post-forgot-password')}}" method="post">{{ csrf_field() }}
+      <form action="{{ url('reset-password/' . $user->remember_token) }}" method="post">
+{{ csrf_field() }}
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email">
+          <input type="password" class="form-control" name="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <!-- <input type="checkbox" id="remember" name="remember"> -->
+              <input type="checkbox" id="remember" name="remember">
               <label for="remember">
-                <!-- Remember Me -->
+                Remember Me
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <p class="mb-1">
-        <a href="{{url('forgot-password')}}">I forgot my password</a>
-      </p>
-      <p class="mb-1">
-        <a href="{{url('/')}}">Login</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->
 </div>
-<!-- /.login-box -->
-
 <!-- jQuery -->
 <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
